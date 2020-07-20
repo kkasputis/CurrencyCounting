@@ -1,0 +1,111 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<fieldset style="width: 80%; margin: auto;">
+	<legend>Valiutos konvertavimas</legend>
+	<div class="flex-row-style">
+	<div class="flex-column-style">
+	Pasirintike valiuta is kurios konvertuosite 
+	<select id="currencyfrom">
+	
+		<option th:each="name : ${currencyNames}" th:value="${name.code}"
+			th:text="@{${name.code} + ' ' + ${name.nameLt}}">EUR</option>
+
+	</select> <input type="text" id="sum"
+		onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="input-text" value="1"></input>
+		</div>
+		<div  class="flex-column-style">
+	Pasirinkite i kokia valiute konvertuosite <select id="currencyTo">
+
+		<option th:each="name : ${currencyNames}"
+		 th:value="${name.code}"
+			th:text="@{${name.code} + ' ' + ${name.nameLt}}">EUR</option>
+	</select> <span id="result" class="calculation-result"></span>
+	</div>
+
+	</div>
+	<div class="button-center">
+		<button onClick="calculate()">Skaičiuoti</button>
+		</div>
+</fieldset>
+
+
+
+
+
+
+<fieldset style="width: 80%; margin: auto;">
+	<legend>Valiutos pokyčio istorija</legend>
+	<form method="POST" th:action="@{/history}">
+	<div  class="flex-column-style" style="width: 80%; margin: auto;">
+
+		Pasirinkite valiutą: <select name="currencyCode" id="currencyCode">
+		
+			<option th:each="name : ${currencyNames}" th:value="${name.code}"
+				th:text="@{${name.code} + ' ' + ${name.nameLt}}">EUR</option>
+				
+		</select> Pasirinkite datą nuo kada: <input type="date" name="dateFrom"
+			id="dateFrom" required  th:value="${rateList != null} ? ${#temporals.format(rateList[0].date,'yyyy-MM-dd')} : ${#dates.format(#dates.createNow(),'YYYY-MM-dd')}">
+			 Pasirinkite datą iki kada: <input type="date"
+			name="dateTo" id="dateTo" required th:value="${rateList != null} ? ${#temporals.format(rateList[#lists.size(rateList) - 1].date,'yyyy-MM-dd')} : ${#dates.format(#dates.createNow(),'YYYY-MM-dd')}"> 
+			<div class="button-center">
+			<input type="submit" value="Rodyti">
+			</div>
+			
+			</div>
+	</form>
+</fieldset>
+
+
+<script th:inline="javascript">
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+var yyyy = today.getFullYear();
+/*<![CDATA[*/
+var currentCurrency = [[${rateList} != null ? ${rateList[0].name.code} : 'USD']];
+/*]]>*/
+
+
+if (dd < 10) {
+	dd = '0' + dd
+}
+if (mm < 10) {
+	mm = '0' + mm
+}
+
+today = yyyy + '-' + mm + '-' + dd;
+
+document.getElementById("dateFrom").setAttribute("max", today);
+document.getElementById("dateTo").setAttribute("max", today);
+document.getElementById("currencyCode").value = currentCurrency;
+document.getElementById("currencyfrom").value = 'EUR';
+document.getElementById("currencyTo").value = 'GBP';
+
+function calculate() {
+		if (document.getElementById("sum").value != "") {
+	        $.ajax({ 
+	            type : "GET",
+	            url : "/calculate?sum=" + document.getElementById("sum").value + "&from=" + document.getElementById("currencyfrom").value + "&to=" + document.getElementById("currencyTo").value,
+	       
+	            success: function(data){
+	       			if(data != null) {
+	            	 document.getElementById("result").innerHTML = data; }
+	       			
+	       			else { document.getElementById("result").innerHTML = 'Įvyko klaida.'; 
+	            		 document.getElementById("result").style.color = "red";}
+	          
+	            }
+	        });
+		  }
+		}
+
+
+</script>
+</html>

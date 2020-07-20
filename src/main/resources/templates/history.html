@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Valiutos kurso istorija</title>
+</head>
+<body>
+<div style="text-align: center; font-size: xx-large; margin-top: 20px">
+Valiutos kurso istorija
+</div>
+<div th:if="${rateList != null}">
+<div style="width: 80%; margin:auto; text-align: center; margin-top: 10px;" th:text="@{'Rodoma ' + ${rateList[0].name.nameLt} 
++ ' kurso istorija nuo ' + ${#temporals.format(rateList[0].date,'yyyy-MM-dd')} + ' iki ' 
++ ${#temporals.format(rateList[#lists.size(rateList) - 1].date,'yyyy-MM-dd')} + '.'}"></div>
+	<div style="width: 100%; height: 500px; margin: auto;" id="chart_div"></div>
+</div>
+<div style="width: 80%; margin:auto; text-align: center; margin-top: 10px;" th:if="${rateList == null}">
+Atsiprašome bet negalėjome rasti šios valiutos istorijos duomenų bazėje. Bandykite įvesti kitą valiutą arba datą.
+</div>
+<fieldset style="width: 80%; margin: auto;">
+	<legend>Naujausi kursai</legend>
+		<div class="button-center">
+	<button onclick="window.location.href='/latestrates'">Rodyti naujausius visų valiutų kursus</button>
+	</div>
+</fieldset>
+ <th:block th:include="/selection"></th:block>
+ <div style="margin-bottom: 50px"></div>
+</body>
+
+  <script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script th:inline="javascript">
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawBasic);
+
+
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'X');
+      data.addColumn('number', 'Kursas');
+      data.addRows([
+    	  [# th:each="rate : ${rateList}"]
+    	[ [[${#temporals.format(rate.date,'yyyy-MM-dd')}]] , [[${rate.rate}]] ], 
+   
+    	 [/]
+
+      ]);
+
+      
+      var options = {
+        hAxis: {
+          title: 'Data'
+          
+        },
+        vAxis: {
+          title: 'Kursas'
+        },
+        legend: {position: 'none'}
+
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+
+</script>
+</html>

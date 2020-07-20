@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Valiutos kurso skaičiuoklė</title>
+</head>
+<body>
+<div style="text-align: center; font-size: xxx-large; margin-top: 20px">
+Valiutos kurso skaičiuoklė
+</div>
+<div>
+<div style="text-align:center; margin:auto; margin-top: 10px; margin-bottom: 20px; width: 60%;">
+Sveiki atvykę i valiutos skaičiuoklę. Čia galite konvertuoti valiutas ir pažiųrėti valiutos kurso istoriją.
+ Duomenų bazėje saugoma istorija nuo 1999 metų.
+ Valiutos kursai atnaujinami kievieną dieną 8:00.
+</div>
+
+<div>
+<div style="text-align:center;">
+Instrukcijos
+</div>
+<ul style="list-style-type:none; display: table; margin: auto;">
+  <li>Valiutos konvertavimas
+  <ul>
+  <li>Pasirinkite valiutą iš kurios konvertuosite</li>
+  <li>Įveskite sumą</li>
+  <li>Pasirinkite į kokią valiuta konvertuosite</li>
+  <li>Spauskite skaičiuoti!</li>
+  </ul>
+  </li>
+  <li>Valiutos kurso istorija
+    <ul>
+  <li>Pasirinkite kokios valiutos kurso istoriją norite pamatyti</li>
+  <li>Pasirinkite datą nuo kada rodyti istoriją</li>
+  <li>Pasirinkite datą iki kada rodyti istoriją</li>
+  <li>Spauskite rodyti!</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+ <th:block th:include="/selection"></th:block>
+ <th:block th:include="/currencyTable"></th:block>
+</body>
+
+</html>

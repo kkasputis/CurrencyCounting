@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div style="text-align: center; font-size: xx-large; margin-top: 20px">
+Naujausi valiutų kursai
+</div>
+<table style="width:80%; margin:auto;">
+  <tr>
+    <th>Valiutos kodas</th>
+    <th>Valiutos pavadinimas</th>
+    <th>Kursas</th>
+  </tr>
+  <tr th:each="rate: ${currentRate}">
+    <td th:text="${rate.name.code}"></td>
+    <td th:text="${rate.name.nameLt}"></td>
+    <td th:text="${rate.rate}"></td>
+  </tr>
+  </table>
+
+</html>

@@ -1,0 +1,131 @@
+<style>
+.noting {
+	
+}
+
+input[type=submit] {
+	background-color: #74aaff;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #bad5ff;
+}
+
+input [type=text], input[type=date], select {
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 0px;
+	min-width: 300px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+.input-text {
+	width: 100%;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	padding: 12px 20px 12px 0px;
+	min-width: 300px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+.calculation-result {
+	width: 100%;
+	padding: 12px 20px 12px 0px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: x-large;
+}
+
+button {
+	background-color: #74aaff;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #bad5ff;
+}
+
+fieldset {
+	min-width: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+legend {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 20px;
+	font-size: 21px;
+	line-height: inherit;
+	color: #333;
+	border: 0;
+	border-bottom-color: currentcolor;
+	border-bottom-style: none;
+	border-bottom-width: 0px;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.flex-column-style {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-row-style {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 80%;
+	margin: auto;
+}
+
+.button-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #d3e2ff;
+}
+</
+style
+>
