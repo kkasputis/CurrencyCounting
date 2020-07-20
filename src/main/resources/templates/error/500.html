@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Serverio klaida</title>
+</head>
+<body>
+<div style="width:80%; margin:auto; text-align:center; font-size:xxx-large; margin-top:50px;">Valiutos kurso skaičiuoklė</div>
+<div style="width: 80%; margin:auto; text-align: center; margin-top: 10px; font-size:large;">
+O ne...<span style="color:red">Serverio klaida</span>. Įvyko serverio klaida. Bandysiu pasitaisyti :) </div>
+<fieldset style="width: 80%; margin: auto;">
+	<legend>Naujausi kursai</legend>
+		<div class="button-center">
+	<button onclick="window.location.href='/latestrates'">Rodyti naujausius visų valiutų kursus</button>
+	</div>
+</fieldset>
+<th:block th:include="/selection"></th:block>
+<div th:text="@{'Error: ' + ${error}}"></div>
+</body>
+</html>

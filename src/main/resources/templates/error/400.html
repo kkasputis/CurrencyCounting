@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Bloga užklausa</title>
+</head>
+<body>
+<div style="width:80%; margin:auto; text-align:center; font-size:xxx-large; margin-top:50px;">Valiutos kurso skaičiuoklė</div>
+<div style="width: 80%; margin:auto; text-align: center; margin-top: 10px; font-size:large;">
+Atsiprašome, <span style="color:red">Bloga užklausa</span>. Bandykite dar kartą </div>
+<fieldset style="width: 80%; margin: auto;">
+	<legend>Naujausi kursai</legend>
+		<div class="button-center">
+	<button onclick="window.location.href='/latestrates'">Rodyti naujausius visų valiutų kursus</button>
+	</div>
+</fieldset>
+<th:block th:include="/selection"></th:block>
+</body>
+</html>
