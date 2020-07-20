@@ -11,7 +11,7 @@
 	<legend>Valiutos konvertavimas</legend>
 	<div class="flex-row-style">
 	<div class="flex-column-style">
-	Pasirintike valiuta is kurios konvertuosite 
+	Pasirinkite valiutą iš kurios konvertuosite 
 	<select id="currencyfrom">
 	
 		<option th:each="name : ${currencyNames}" th:value="${name.code}"
@@ -21,7 +21,7 @@
 		onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="input-text" value="1"></input>
 		</div>
 		<div  class="flex-column-style">
-	Pasirinkite i kokia valiute konvertuosite <select id="currencyTo">
+	Pasirinkite į kokią valiutą konvertuosite <select id="currencyTo">
 
 		<option th:each="name : ${currencyNames}"
 		 th:value="${name.code}"
